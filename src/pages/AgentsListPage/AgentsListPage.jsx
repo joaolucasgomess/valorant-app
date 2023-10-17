@@ -22,7 +22,13 @@ export function AgentsListPage(props) {
     },[])
 
     const printAgentsList = agentsList.map((agent) => {
-        return <CardAgent infoAgent={agent}/>
+        return(
+            <CardAgent 
+                key={agent.displayName} 
+                infoAgent={agent}
+                onClick={() => props.goToDetailPage('Gekko')}
+            />
+        ) 
     })
     
     return(

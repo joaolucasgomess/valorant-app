@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-export function AgentsDetailPage() {
+export function AgentsDetailPage(props) {
 
     /*const [characterList, setCharacterList] = useState('')
 

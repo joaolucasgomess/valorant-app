@@ -6,7 +6,6 @@ export function CardAgent(props) {
     const [agent, setAgent] = useState({
         uuid: props.infoAgent.uuid,
         name: props.infoAgent.displayName,
-        description: props.infoAgent.description,
         icon: props.infoAgent.displayIcon,
         role: props.infoAgent.role.displayName
     })

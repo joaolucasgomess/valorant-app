@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
     background-color: #F2F2F2;
-    margin: 2.5rem;
+    margin: 2.25rem;
     padding: 1rem;
     display: flex;
     flex-flow: column;
