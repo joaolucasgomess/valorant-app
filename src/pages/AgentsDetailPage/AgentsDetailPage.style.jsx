@@ -22,3 +22,20 @@ export const ContainerSection = styled.div`
     justify-content: space-between;
     max-width: 100vw;
 `
+
+export const DisplayName = styled.h1`
+    display: flex;
+    justify-content: flex-start;
+`
+
+export const DisplayFunction = styled.h1`
+    display: flex;
+    justify-content: flex-end;
+`
+
+export const ContainerAbilities = styled.div`
+    display: flex;
+    background-color: gray;
+    justify-content: space-between;
+    max-width: 100vw;
+`

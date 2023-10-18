@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { ContainerHeader, Video, ContainerSection } from './AgentsDetailPage.style'
+import { ContainerHeader, Video, ContainerSection, DisplayName, DisplayFunction, ContainerAbilities } from './AgentsDetailPage.style'
 
 export function AgentsDetailPage(props) {
 
@@ -13,6 +13,7 @@ export function AgentsDetailPage(props) {
         try{
             const response = await axios.get(url)
             setAgent(response.data.data)
+            console.log(response.data.data)
         }catch(error){
             console.log(error)
         }
@@ -21,23 +22,41 @@ export function AgentsDetailPage(props) {
     useEffect(() => {
         getAgentByUuid()
     },[])
+
+    function getAbilities() {
+        if (agent.abilities) {
+          return agent.abilities.map((ability, index) => (
+            <div key={index}>
+              <h3>{ability.displayName}</h3>
+              <p>{ability.description}</p>
+            </div>
+          ));
+        }else{
+          return <p>Nenhuma habilidade encontrada.</p>;
+        }
+      }
     
     return(
         <>
             <ContainerHeader>
-                <Video 
+                
+                {/*<Video 
                     autoPlay="autoplay" muted loop
                     preload="true"
                     playsInline
                     poster={imgBackground}
                 >
                     <source src={videoBackground} type="video/mp4"/>  
-                </Video>
+                </Video> */}
                 <img src={agent.bustPortrait} alt="Portrait"/>
             </ContainerHeader>
             <ContainerSection>
-                <h1>{agent.displayName}</h1>
-            </ContainerSection>   
+                <DisplayName>{agent.displayName}</DisplayName>
+                <DisplayFunction>{agent.role.displayName}</DisplayFunction>
+            </ContainerSection>
+            <ContainerAbilities>
+                {getAbilities()}
+            </ContainerAbilities>
         </> 
     )
 }
