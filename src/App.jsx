@@ -5,16 +5,16 @@ import { AgentsListPage } from './pages/AgentsListPage/AgentsListPage'
 function App() {
 
   const [currentPage, setCurrentPage] = useState('')
-  const [nameAgentSearch, setNameAgentSearch] = useState('')
+  const [uuidAgentSearch, setUuidAgentSearch] = useState('')
 
-  const goToDetailPage = (nameAgent) => {
+  const goToDetailPage = (uuidAgent) => {
     setCurrentPage('detail')
-    setNameAgentSearch(nameAgent)
+    setUuidAgentSearch(uuidAgent)
   }
 
     const goToListPage = () => {
       setCurrentPage('list')
-      setNameAgentSearch('')
+      setUuidAgentSearch('')
     }
 
     const selectPage = () => {
@@ -22,7 +22,7 @@ function App() {
         case 'list': 
           return <AgentsListPage goToDetailPage={goToDetailPage}/>
         case 'detail':
-          return <AgentsDetailPage idSearch={nameAgentSearch} goToListPage={goToListPage}/>
+          return <AgentsDetailPage uuidAgent={uuidAgentSearch} goToListPage={goToListPage}/>
         default: 
           return <AgentsListPage goToDetailPage={goToDetailPage}/>
       }

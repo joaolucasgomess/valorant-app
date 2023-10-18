@@ -13,7 +13,7 @@ export function AgentsListPage(props) {
             const response = await axios.get(url)
             setAgentsList(response.data.data)
         }catch(error){
-            console.log(error.message)
+            console.log(error)
         }
     }
 
@@ -26,7 +26,7 @@ export function AgentsListPage(props) {
             <CardAgent 
                 key={agent.displayName} 
                 infoAgent={agent}
-                onClick={() => props.goToDetailPage('Gekko')}
+                goToDetailPage={props.goToDetailPage}
             />
         ) 
     })

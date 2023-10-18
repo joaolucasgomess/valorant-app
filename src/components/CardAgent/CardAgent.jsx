@@ -11,7 +11,7 @@ export function CardAgent(props) {
     })
 
     return(
-        <Card>
+        <Card onClick={() => props.goToDetailPage(agent.uuid)}>
             <CardImage>
                 <img src={agent.icon} alt="Icon" />
             </CardImage>
