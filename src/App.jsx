@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { AgentsDetailPage } from './pages/AgentsDetailPage/AgentsDetailPage'
 import { AgentsListPage } from './pages/AgentsListPage/AgentsListPage'
+import { Header } from './components/Header/Header'
 
 function App() {
 
   const [currentPage, setCurrentPage] = useState('')
   const [uuidAgentSearch, setUuidAgentSearch] = useState('')
+  const [inputSearch, setInputSearch] = useState('')
 
   const goToDetailPage = (uuidAgent) => {
     setCurrentPage('detail')
@@ -15,6 +17,11 @@ function App() {
     const goToListPage = () => {
       setCurrentPage('list')
       setUuidAgentSearch('')
+    }
+
+    const search = (searchedWord) => {
+      setInputSearch(searchedWord)
+      console.log(inputSearch)
     }
 
     const selectPage = () => {
@@ -30,6 +37,7 @@ function App() {
 
   return (
     <>
+      <Header search={search}/>
       {selectPage()}
     </>
   );

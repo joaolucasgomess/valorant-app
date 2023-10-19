@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { ContainerHeader, Video, ContainerSection, DisplayName, DisplayFunction, ContainerAbilities } from './AgentsDetailPage.style'
+import { ContainerHeader, Video, ContainerSection, ContainerAbilities } from './AgentsDetailPage.style'
+import { SelectionAbilities } from '../../components/SectionAbilities/SelectionAbilities'
 
 export function AgentsDetailPage(props) {
 
@@ -23,39 +24,35 @@ export function AgentsDetailPage(props) {
         getAgentByUuid()
     },[])
 
-    function getAbilities() {
-        if (agent.abilities) {
-          return agent.abilities.map((ability, index) => (
-            <div key={index}>
-              <h3>{ability.displayName}</h3>
-              <p>{ability.description}</p>
-            </div>
-          ));
-        }else{
-          return <p>Nenhuma habilidade encontrada.</p>;
-        }
-      }
+    const printAbilities = agent.abilities && agent.abilities.map((ability) => {
+        return(
+            <SelectionAbilities 
+                key={ability.displayName} 
+                ability={ability}
+            />
+        )
+    })
     
     return(
         <>
             <ContainerHeader>
                 
-                {/*<Video 
+                <Video 
                     autoPlay="autoplay" muted loop
                     preload="true"
                     playsInline
                     poster={imgBackground}
                 >
                     <source src={videoBackground} type="video/mp4"/>  
-                </Video> */}
+                </Video> 
                 <img src={agent.bustPortrait} alt="Portrait"/>
             </ContainerHeader>
             <ContainerSection>
-                <DisplayName>{agent.displayName}</DisplayName>
-                <DisplayFunction>{agent.role.displayName}</DisplayFunction>
+                <h1>{agent.displayName}</h1>
+                <h2>{agent.role && agent.role.displayName}</h2>
             </ContainerSection>
             <ContainerAbilities>
-                {getAbilities()}
+                {printAbilities}
             </ContainerAbilities>
         </> 
     )
