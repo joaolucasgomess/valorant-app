@@ -5,9 +5,9 @@ Este é um projeto que te permite explorar os personagens do jogo Valorant, exib
 Exibe uma lista de personagens do jogo Valorant, com detalhes completos sobre cada personagem. Conta com um sistema de busca por nome ou função do personagem.
 
 # Tecnologias Utilizadas:
-• React
-• Styled Components
-• Axios
+- React
+- Styled Components
+- Axios
 
 # Como baixar e iniciar o aplicativo:
 
